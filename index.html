@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kanban App</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Loading message -->
+  <div id="loading">Loading tasks...</div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar hidden" id="sidebar">
+    <button id="toggle-sidebar">Toggle Sidebar</button>
+    <div class="sidebar-content">
+      <button id="theme-toggle">Toggle Theme</button>
+    </div>
+  </aside>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="mobile-menu hidden">
+    <button id="close-mobile">Close</button>
+    <button id="theme-toggle-mobile">Toggle Theme</button>
+  </div>
+
+  <!-- App header -->
+  <header>
+    <button id="open-mobile">Menu</button>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="columns">
+      <section id="todo" class="column">
+        <h2>To Do</h2>
+        <div class="task-container"></div>
+      </section>
+      <section id="doing" class="column">
+        <h2>Doing</h2>
+        <div class="task-container"></div>
+      </section>
+      <section id="done" class="column">
+        <h2>Done</h2>
+        <div class="task-container"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Modal for editing tasks -->
+  <div id="task-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Edit Task</h3>
+      <form id="task-form">
+        <input type="hidden" id="task-id" />
+        <label>
+          Title:
+          <input type="text" id="task-title" required />
+        </label>
+        <label>
+          Description:
+          <textarea id="task-desc"></textarea>
+        </label>
+        <label>
+          Status:
+          <select id="task-status">
+            <option value="To Do">To Do</option>
+            <option value="Doing">Doing</option>
+            <option value="Done">Done</option>
+          </select>
+        </label>
+        <label>
+          Priority:
+          <select id="task-priority">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </label>
+        <button type="submit">Save</button>
+        <button type="button" id="delete-task">Delete</button>
+        <button type="button" id="close-modal">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+<script src="modules/storage.js"></script>
+<script src="modules/api.js"></script>
+<script src="modules/tasks.js"></script>
+<script src="modules/modal.js"></script>
+<script src="modules/sidebar.js"></script>
+<script src="modules/theme.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
