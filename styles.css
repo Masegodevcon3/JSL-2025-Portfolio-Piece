@@ -1,0 +1,114 @@
+/* Basic Reset & Body Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background: #121212;
+  color: #fff;
+}
+
+/* Loading Message */
+#loading {
+  text-align: center;
+  padding: 1em;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 200px;
+  background-color: #eee;
+  padding: 1em;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s;
+  z-index: 10;
+}
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+/* Mobile Menu Styles */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  background: #ccc;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+.hidden {
+  display: none;
+}
+
+/* Columns Layout */
+.columns {
+  display: flex;
+  margin-left: 220px;
+  padding: 1em;
+  gap: 1em;
+  overflow-x: auto;
+}
+
+/* Individual Column */
+.column {
+  flex: 1;
+  background: #f4f4f4;
+  border-radius: 4px;
+  padding: 0.5em;
+  min-width: 200px;
+}
+body.dark-mode .column {
+  background: #333;
+  color: #fff;
+}
+
+/* Task Cards */
+.task {
+  background: #fff;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  border-radius: 4px;
+  cursor: grab;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body.dark-mode .task {
+  background: #555;
+  color: #fff;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+.modal-content {
+  background: #fff;
+  padding: 1em;
+  border-radius: 4px;
+  width: 300px;
+}
+body.dark-mode .modal-content {
+  background: #222;
+  color: #fff;
+}
