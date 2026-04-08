@@ -7,7 +7,7 @@ const closeMobileBtn = document.getElementById('close-mobile');
 
 toggleBtn.addEventListener('click', () => {
   sidebar.classList.toggle('hidden');
-  // Swap icon
+  // Swap icon based on visibility
   if (sidebar.classList.contains('hidden')) {
     sidebarIcon.src = 'assets/icon-show-sidebar.svg';
   } else {

@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize tasks
   tasksModule.init();
 
-  // Hide loading after init
+  // Hide loading indicator
   document.getElementById('loading').style.display = 'none';
 
-  // Sidebar and theme event handlers are in their modules
+  // Sidebar and theme toggling handled in modules
 });

@@ -7,7 +7,10 @@ const titleInput = document.getElementById('task-title');
 const descInput = document.getElementById('task-desc');
 const statusSelect = document.getElementById('task-status');
 const prioritySelect = document.getElementById('task-priority');
+
 const deleteBtn = document.getElementById('delete-task');
+const closeBtn = document.getElementById('close-modal');
+const cancelBtn = document.getElementById('cancel');
 
 let currentTask = null;
 
@@ -18,17 +21,17 @@ export function open(task) {
   descInput.value = task.description;
   statusSelect.value = task.status;
   prioritySelect.value = task.priority;
-  document.getElementById('task-modal').classList.remove('hidden');
+  modalEl.classList.remove('hidden');
 }
 
+// Close modal
 function close() {
-  document.getElementById('task-modal').classList.add('hidden');
-  form.reset();
-  currentTask = null;
+  modalEl.classList.add('hidden');
 }
 
-document.getElementById('close-modal').addEventListener('click', close);
-document.getElementById('cancel').addEventListener('click', close);
+// Event listeners
+closeBtn.addEventListener('click', close);
+cancelBtn.addEventListener('click', close);
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
