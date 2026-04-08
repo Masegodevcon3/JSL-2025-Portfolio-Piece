@@ -11,10 +11,6 @@ const deleteBtn = document.getElementById('delete-task');
 
 let currentTask = null;
 
-/**
- * Open modal and populate with task data.
- * @param {Object} task
- */
 export function open(task) {
   currentTask = task;
   taskIdInput.value = task.id;
@@ -22,14 +18,11 @@ export function open(task) {
   descInput.value = task.description;
   statusSelect.value = task.status;
   prioritySelect.value = task.priority;
-  modalEl.classList.remove('hidden');
+  document.getElementById('task-modal').classList.remove('hidden');
 }
 
-/**
- * Close modal and reset form.
- */
 function close() {
-  modalEl.classList.add('hidden');
+  document.getElementById('task-modal').classList.add('hidden');
   form.reset();
   currentTask = null;
 }

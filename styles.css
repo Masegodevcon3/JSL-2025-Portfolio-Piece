@@ -1,4 +1,4 @@
-/* Reset and Body */
+/* Basic styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -6,19 +6,19 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* Dark Mode */
+/* Dark theme styles */
 body.dark-mode {
   background: #121212;
   color: #fff;
 }
 
-/* Loading */
+/* Loading message */
 #loading {
   text-align: center;
   padding: 1em;
 }
 
-/* Sidebar */
+/* Sidebar styles */
 .sidebar {
   width: 200px;
   background-color: #eee;
@@ -34,7 +34,7 @@ body.dark-mode {
   transform: translateX(-100%);
 }
 
-/* Mobile Menu */
+/* Mobile menu styles */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -51,7 +51,7 @@ body.dark-mode {
   display: none;
 }
 
-/* Columns Layout */
+/* Columns layout */
 .columns {
   display: flex;
   margin-left: 220px;
@@ -71,7 +71,7 @@ body.dark-mode .column {
   color: #fff;
 }
 
-/* Tasks */
+/* Task cards */
 .task {
   background: #fff;
   padding: 0.5em;
@@ -87,7 +87,7 @@ body.dark-mode .task {
   color: #fff;
 }
 
-/* Modal */
+/* Modal styles */
 .modal {
   position: fixed;
   top: 0;

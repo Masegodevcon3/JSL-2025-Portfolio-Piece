@@ -1,11 +1,11 @@
 import { tasksModule } from './modules/tasks.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize tasks: fetch or load
+  // Initialize tasks
   tasksModule.init();
 
-  // Hide loading indicator
+  // Hide loading after init
   document.getElementById('loading').style.display = 'none';
 
-  // Event listeners for sidebar and theme are set in modules
+  // Sidebar and theme event handlers are in their modules
 });

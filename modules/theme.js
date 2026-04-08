@@ -1,12 +1,24 @@
 const themeToggleBtn = document.getElementById('theme-toggle');
-const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+const themeIcon = document.getElementById('theme-icon');
+const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
+const themeIconMobile = document.getElementById('theme-icon-mobile');
+const logo = document.getElementById('logo');
 
-/**
- * Toggle between dark and light themes.
- */
 function toggleTheme() {
   document.body.classList.toggle('dark-mode');
+  const isDark = document.body.classList.contains('dark-mode');
+
+  // Swap icons and logo
+  if (isDark) {
+    themeIcon.src = 'assets/icon-light-theme.svg';
+    themeIconMobile.src = 'assets/icon-light-theme.svg';
+    logo.src = 'assets/logo-dark.svg';
+  } else {
+    themeIcon.src = 'assets/icon-dark-theme.svg';
+    themeIconMobile.src = 'assets/icon-dark-theme.svg';
+    logo.src = 'assets/logo-light.svg';
+  }
 }
 
-themeToggleBtn.addEventListener('click', toggleTheme);
-themeToggleMobileBtn.addEventListener('click', toggleTheme);
+if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+if (themeToggleBtnMobile) themeToggleBtnMobile.addEventListener('click', toggleTheme);

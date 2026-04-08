@@ -12,21 +12,28 @@
 
   <!-- Sidebar -->
   <aside class="sidebar hidden" id="sidebar">
-    <button id="toggle-sidebar">Toggle Sidebar</button>
+    <button id="toggle-sidebar" aria-label="Toggle Sidebar">
+      <img id="sidebar-icon" src="assets/icon-hide-sidebar.svg" alt="Toggle Sidebar" />
+    </button>
     <div class="sidebar-content">
-      <button id="theme-toggle">Toggle Theme</button>
+      <button id="theme-toggle" aria-label="Toggle Theme">
+        <img id="theme-icon" src="assets/icon-light-theme.svg" alt="Toggle Theme" />
+      </button>
     </div>
   </aside>
 
   <!-- Mobile menu -->
   <div id="mobile-menu" class="mobile-menu hidden">
-    <button id="close-mobile">Close</button>
-    <button id="theme-toggle-mobile">Toggle Theme</button>
+    <button id="close-mobile" aria-label="Close Menu">Close</button>
+    <button id="theme-toggle-mobile" aria-label="Toggle Theme">
+      <img id="theme-icon-mobile" src="assets/icon-light-theme.svg" alt="Toggle Theme" />
+    </button>
   </div>
 
   <!-- App header -->
   <header>
-    <button id="open-mobile">Menu</button>
+    <img id="logo" src="assets/logo-light.svg" alt="Logo" />
+    <button id="open-mobile" aria-label="Open Menu">Menu</button>
   </header>
 
   <!-- Main Content -->
