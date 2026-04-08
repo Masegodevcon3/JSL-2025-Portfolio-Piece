@@ -1,103 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kanban App</title>
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kanban Board</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Loading message -->
-  <div id="loading">Loading tasks...</div>
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <!-- Logo -->
+      <div class="sidebar-logo">
+        <div class="logo-bars">
+          <span class="bar"></span>
+          <span class="bar bar-mid"></span>
+          <span class="bar bar-light"></span>
+        </div>
+        <span class="logo-text">kanban</span>
+      </div>
 
-  <!-- Sidebar -->
-  <aside class="sidebar hidden" id="sidebar">
-    <button id="toggle-sidebar" aria-label="Toggle Sidebar">
-      <img id="sidebar-icon" src="assets/icon-hide-sidebar.svg" alt="Toggle Sidebar" />
-    </button>
-    <div class="sidebar-content">
-      <button id="theme-toggle" aria-label="Toggle Theme">
-        <img id="theme-icon" src="assets/icon-light-theme.svg" alt="Toggle Theme" />
-      </button>
+      <!-- Board list -->
+      <div class="sidebar-boards">
+        <p class="boards-heading">ALL BOARDS (1)</p>
+        <div class="board-item active">
+          <svg class="board-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M0 2.889A2.889 2.889 0 0 1 2.889 0H13.11A2.889 2.889 0 0 1 16 2.889V13.11A2.889 2.889 0 0 1 13.111 16H2.89A2.889 2.889 0 0 1 0 13.111V2.89Zm1.333 5.555v4.667c0 .859.697 1.556 1.556 1.556h6.889V8.444H1.333Zm8.445-1.333V1.333h-6.89A1.556 1.556 0 0 0 1.334 2.89v4.22h8.444Zm1.333 1.333v5.778H13.11c.86 0 1.556-.697 1.556-1.556v-4.222h-3.556Zm3.556-1.333V2.889A1.556 1.556 0 0 0 13.11 1.333H11.11v5.778h3.556Z" fill="currentColor"/></svg>
+          <span>Platform Launch</span>
+        </div>
+      </div>
+
+      <!-- Bottom: theme toggle + hide -->
+      <div class="sidebar-bottom">
+        <div class="theme-toggle-wrapper">
+          <span class="theme-icon">☀️</span>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <div class="toggle-knob" id="toggleKnob"></div>
+          </button>
+          <span class="theme-icon">🌙</span>
+        </div>
+        <button class="hide-sidebar-btn" id="hideSidebarBtn">
+          <svg width="18" height="16" viewBox="0 0 18 16" fill="none"><path d="M8.522 11.223a4.252 4.252 0 0 1-3.654-5.22l3.654 5.22ZM9 12.25A8.685 8.685 0 0 1 1.5 8a8.612 8.612 0 0 1 2.76-3.556l-.97-.97A9.834 9.834 0 0 0 .188 7.5v1a9.882 9.882 0 0 0 15.27 4.197l-.98-.98A8.56 8.56 0 0 1 9 12.25Z" fill="#828FA3"/><path d="m16.97 14.47-2.5-2.5-2-2-3-3-3-3-2-2-2.5-2.5L2.53.91l-.94.94 2.06 2.06A9.858 9.858 0 0 0 .188 7.5v1a9.882 9.882 0 0 0 14.27 4.197l1.512 1.513.94-.94-1.94-1.8ZM9 3.75c.592 0 1.166.066 1.715.192L9.49 5.167A4.252 4.252 0 0 0 4.778 9.49L3.303 7.985A8.612 8.612 0 0 1 9 3.75Zm3.07 5.32-1.442-1.442a2.917 2.917 0 0 0-2.506-2.506L6.68 3.68A4.248 4.248 0 0 1 12.07 9.07Z" fill="#828FA3"/></svg>
+          <span>Hide Sidebar</span>
+        </button>
+      </div>
     </div>
   </aside>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="mobile-menu hidden">
-    <button id="close-mobile" aria-label="Close Menu">Close</button>
-    <button id="theme-toggle-mobile" aria-label="Toggle Theme">
-      <img id="theme-icon-mobile" src="assets/icon-light-theme.svg" alt="Toggle Theme" />
-    </button>
-  </div>
+  <!-- Show sidebar button (visible when sidebar is hidden) -->
+  <button class="show-sidebar-btn hidden" id="showSidebarBtn" aria-label="Show sidebar">
+    <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><path d="M15.815 4.434A9.055 9.055 0 0 0 8 0 9.055 9.055 0 0 0 .185 4.434a1.333 1.333 0 0 0 0 1.354A9.055 9.055 0 0 0 8 10.222a9.055 9.055 0 0 0 7.815-4.434 1.333 1.333 0 0 0 0-1.354ZM8 8.89A3.778 3.778 0 1 1 8 1.333 3.778 3.778 0 0 1 8 8.89ZM8 3.556a1.556 1.556 0 1 0 0 3.111 1.556 1.556 0 0 0 0-3.111Z" fill="#FFF"/></svg>
+  </button>
 
-  <!-- App header -->
-  <header>
-    <img id="logo" src="assets/logo-light.svg" alt="Logo" />
-    <button id="open-mobile" aria-label="Open Menu">Menu</button>
-  </header>
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="main-content" id="mainContent">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <!-- Mobile menu button -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <div class="logo-bars small">
+            <span class="bar"></span><span class="bar bar-mid"></span><span class="bar bar-light"></span>
+          </div>
+          <span class="logo-text">kanban</span>
+          <svg class="chevron" width="10" height="7" viewBox="0 0 10 7"><path stroke="#635FC7" stroke-width="2" fill="none" d="m1 1 4 4 4-4"/></svg>
+        </button>
+        <h2 class="board-title">Platform Launch</h2>
+      </div>
+      <button class="add-task-btn" id="addTaskBtn">
+        <span class="plus">+</span>
+        <span class="btn-text">Add New Task</span>
+      </button>
+    </header>
 
-  <!-- Main Content -->
-  <main>
-    <div class="columns">
-      <section id="todo" class="column">
-        <h2>To Do</h2>
-        <div class="task-container"></div>
-      </section>
-      <section id="doing" class="column">
-        <h2>Doing</h2>
-        <div class="task-container"></div>
-      </section>
-      <section id="done" class="column">
-        <h2>Done</h2>
-        <div class="task-container"></div>
-      </section>
-    </div>
-  </main>
-
-  <!-- Modal for editing tasks -->
-  <div id="task-modal" class="modal hidden">
-    <div class="modal-content">
-      <h3>Edit Task</h3>
-      <form id="task-form">
-        <input type="hidden" id="task-id" />
-        <label>
-          Title:
-          <input type="text" id="task-title" required />
-        </label>
-        <label>
-          Description:
-          <textarea id="task-desc"></textarea>
-        </label>
-        <label>
-          Status:
-          <select id="task-status">
-            <option value="To Do">To Do</option>
-            <option value="Doing">Doing</option>
-            <option value="Done">Done</option>
-          </select>
-        </label>
-        <label>
-          Priority:
-          <select id="task-priority">
-            <option value="High">High</option>
-            <option value="Medium">Medium</option>
-            <option value="Low">Low</option>
-          </select>
-        </label>
-        <button type="submit">Save</button>
-        <button type="button" id="delete-task">Delete</button>
-        <button type="button" id="close-modal">Cancel</button>
-      </form>
+    <!-- Board columns -->
+    <div class="board" id="board">
+      <!-- Columns are rendered by JavaScript -->
+      <div class="loading" id="loadingMsg">Loading tasks...</div>
+      <div class="error hidden" id="errorMsg">
+        <p id="errorText"></p>
+        <button class="retry-btn" id="retryBtn">Try Again</button>
+      </div>
     </div>
   </div>
 
-<!-- Scripts -->
-<script src="modules/storage.js"></script>
-<script src="modules/api.js"></script>
-<script src="modules/tasks.js"></script>
-<script src="modules/modal.js"></script>
-<script src="modules/sidebar.js"></script>
-<script src="modules/theme.js"></script>
-<script src="main.js"></script>
+  <!-- ===== TASK MODAL ===== -->
+  <div class="modal-overlay hidden" id="modalOverlay">
+    <div class="modal" id="taskModal">
+      <div class="modal-header">
+        <h3>Edit Task</h3>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label class="field-label">Title</label>
+        <input type="text" class="field-input" id="editTitle" placeholder="e.g. Take coffee break" />
+
+        <label class="field-label">Description</label>
+        <textarea class="field-input field-textarea" id="editDesc" rows="4" placeholder="e.g. It's always good to take a break..."></textarea>
+
+        <div class="modal-row">
+          <div class="modal-col">
+            <label class="field-label">Status</label>
+            <select class="field-input" id="editStatus">
+              <option value="todo">TODO</option>
+              <option value="doing">DOING</option>
+              <option value="done">DONE</option>
+            </select>
+          </div>
+          <div class="modal-col">
+            <label class="field-label">Priority</label>
+            <select class="field-input" id="editPriority">
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="delete-btn" id="deleteBtn">Delete</button>
+        <button class="save-btn" id="saveBtn">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
