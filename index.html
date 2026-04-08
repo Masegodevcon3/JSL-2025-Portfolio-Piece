@@ -48,7 +48,7 @@
     </div>
   </aside>
 
-  <!-- Show sidebar button (visible when sidebar is hidden) -->
+  <!-- Show sidebar button -->
   <button class="show-sidebar-btn hidden" id="showSidebarBtn" aria-label="Show sidebar">
     <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><path d="M15.815 4.434A9.055 9.055 0 0 0 8 0 9.055 9.055 0 0 0 .185 4.434a1.333 1.333 0 0 0 0 1.354A9.055 9.055 0 0 0 8 10.222a9.055 9.055 0 0 0 7.815-4.434 1.333 1.333 0 0 0 0-1.354ZM8 8.89A3.778 3.778 0 1 1 8 1.333 3.778 3.778 0 0 1 8 8.89ZM8 3.556a1.556 1.556 0 1 0 0 3.111 1.556 1.556 0 0 0 0-3.111Z" fill="#FFF"/></svg>
   </button>
@@ -68,7 +68,8 @@
         </button>
         <h2 class="board-title">Platform Launch</h2>
       </div>
-      <button class="add-task-btn" id="addTaskBtn">
+      <!-- New "Add New Task" button -->
+      <button id="newTaskBtn" class="add-task-btn">
         <span class="plus">+</span>
         <span class="btn-text">Add New Task</span>
       </button>
@@ -121,6 +122,45 @@
       <div class="modal-footer">
         <button class="delete-btn" id="deleteBtn">Delete</button>
         <button class="save-btn" id="saveBtn">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NEW TASK MODAL ===== -->
+  <div class="modal-overlay hidden" id="newTaskModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>New Task</h3>
+        <button class="modal-close" id="closeNewTask">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label class="field-label">Title</label>
+        <input type="text" id="newTitle" class="field-input" placeholder="e.g. Design login page" />
+
+        <label class="field-label">Description</label>
+        <textarea id="newDesc" class="field-input field-textarea" rows="4" placeholder="Details..."></textarea>
+
+        <div class="modal-row">
+          <div class="modal-col">
+            <label class="field-label">Status</label>
+            <select id="newStatus" class="field-input">
+              <option value="todo">TODO</option>
+              <option value="doing">DOING</option>
+              <option value="done">DONE</option>
+            </select>
+          </div>
+          <div class="modal-col">
+            <label class="field-label">Priority</label>
+            <select id="newPriority" class="field-input">
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="save-btn" id="createTaskBtn">Create Task</button>
       </div>
     </div>
   </div>

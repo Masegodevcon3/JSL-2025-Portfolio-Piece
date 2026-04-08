@@ -472,3 +472,56 @@ async function loadFromAPI() {
 
 // Start the app
 init();
+// Your existing code here...
+
+// ===================
+// ADD NEW TASK MODULE
+// ===================
+
+const newTaskBtn = document.getElementById('newTaskBtn');
+const newTaskModal = document.getElementById('newTaskModal');
+const closeNewTaskBtn = document.getElementById('closeNewTask');
+const createTaskBtn = document.getElementById('createTaskBtn');
+
+// Open modal
+newTaskBtn.addEventListener('click', () => {
+  document.getElementById('newTitle').value = '';
+  document.getElementById('newDesc').value = '';
+  document.getElementById('newStatus').value = 'todo';
+  document.getElementById('newPriority').value = 'medium';
+  newTaskModal.classList.remove('hidden');
+});
+
+// Close modal
+closeNewTaskBtn.addEventListener('click', () => {
+  newTaskModal.classList.add('hidden');
+});
+
+// Create new task
+createTaskBtn.addEventListener('click', () => {
+  const title = document.getElementById('newTitle').value.trim();
+  const description = document.getElementById('newDesc').value.trim();
+  const status = document.getElementById('newStatus').value;
+  const priority = document.getElementById('newPriority').value;
+
+  if (!title) {
+    alert('Please enter a title');
+    return;
+  }
+
+  const newId = 'task-' + Date.now();
+
+  const newTask = {
+    id: newId,
+    title,
+    description,
+    status,
+    priority,
+  };
+
+  tasks.push(newTask);
+  saveTasks(tasks);
+  renderBoard();
+
+  newTaskModal.classList.add('hidden');
+});
